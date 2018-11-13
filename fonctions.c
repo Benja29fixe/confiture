@@ -11,17 +11,15 @@ void initialise(Donnees *d){
   d->L=NULL;
 }
 
-/* 
-SAUT DES ESPACES LORS DE LA LECTURE DANS UN FICHIER POINTE PAR f 
-*/
-
+/***********************************************
+Saut des espaces lors de la lecture dans un fichier pointe par f 
+***********************************************/
 void Skip(FILE *f) {
 
   char c ;
   
   while (isspace(c=getc(f))) ;
   ungetc(c,f) ;
-
 }
 
 /***********************************************
@@ -47,7 +45,7 @@ void GetChaine(FILE *f,int taille_max,char *s)
 
 /***********************************************
 Lit entrees du fichier nomfic et stocke les
-informations dans la bibliotheque B
+informations dans la base de donnees D
 ***********************************************/
 void lecture_fic(char *nomfic, Donnees *D)
 {
@@ -61,8 +59,6 @@ void lecture_fic(char *nomfic, Donnees *D)
   int i=0;
   char s[100];
   s_data *element;
-
-
   
   element=(s_data*)malloc(sizeof(s_data));
     
@@ -78,8 +74,31 @@ void lecture_fic(char *nomfic, Donnees *D)
     element->tab[i]=atoi(s);
   }
 
+  tri_insertion(element->tab, element->nb_bocaux);
+
  element->suiv=D->L;
     D->L=element;
 
   fclose(f);
+}
+
+/***********************************************
+Fonction Tri par Insertion 
+***********************************************/
+void tri_insertion(int *T, int n){
+
+  int i, j;
+  int z, k;
+
+  for(i=1; i<n; i++){
+    z=T[i];
+    k=i-1;
+
+    while(k>-1 && T[k]>z){
+      T[k+1]=T[k];
+      k=k-1;
+    }
+
+    T[k+1]=z;
+  }
 }
