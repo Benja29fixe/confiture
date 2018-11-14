@@ -30,3 +30,5 @@ void GetChaine(FILE *f,int taille_max,char *s);
 void lecture_fic(char *nomfic, Donnees *D);
 
 void tri_insertion(int *T, int n);
+
+int recherche_exhaustive(int k, int *V, int s);

@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include <math.h>
 #include "fonctions.h"
 
 /***********************************************
@@ -100,5 +101,38 @@ void tri_insertion(int *T, int n){
     }
 
     T[k+1]=z;
+  }
+}
+
+/***********************************************
+Algorithme 1 : recherche exhaustive
+***********************************************/
+int recherche_exhaustive(int k, int *V, int s){
+
+  int i, NbCont, x;
+
+  if(s<0){
+    return 100000;
+  }
+
+  else{
+    if(s==0){
+      return 0;
+    }
+
+    else{
+      
+      NbCont=s;
+
+      for(i=0; i<k; i++){
+	x=recherche_exhaustive(k, V, s-V[i]);
+
+	  if((x+1)<NbCont) {
+	    NbCont=x+1;
+	  }
+      }
+
+      return NbCont;
+    }
   }
 }

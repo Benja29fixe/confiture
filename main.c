@@ -33,6 +33,14 @@ int main(int argc ,char** argv){
   for(i=0; i<D.L->nb_bocaux; i++){
     printf("valeur du pot %d : %d\n", i, D.L->tab[i]);
   }
+
+
+  printf("\n=========================\n");
+  printf("1/ Algorithme exhaustif\n");
+  printf("=========================\n");
+  printf("Nombre minimum de bocaux necessaires pour %d g de confiture: %d \n",D.L->quantite_conf, recherche_exhaustive(D.L->nb_bocaux, D.L->tab, D.L->quantite_conf));
+  
+  
  
 }
 
