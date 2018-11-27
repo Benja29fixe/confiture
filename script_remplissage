@@ -1,0 +1,12 @@
+#!/bin/bash
+echo "$1" >fic2
+
+sed -i "s/$/ $2/g" fic2
+
+a=0
+
+while [ $a -lt $2 ]
+      do
+sed -i "s/$/ $((2**$a))/g" fic2
+a=$((a+1))
+done

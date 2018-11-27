@@ -1,0 +1,18 @@
+#!/bin/bash
+
+
+make
+
+a=0
+
+while [ $a -lt 30 ]
+do
+    ./script_remplissage 30 $a 
+
+    
+    ./main fic2 
+
+    a=$((a+1))
+done
+
+
